@@ -1,0 +1,101 @@
+[
+    {
+        "id": "b5f36a39.605608",
+        "type": "tab",
+        "label": "Flow 2"
+    },
+    {
+        "id": "25d3472.0aad0b8",
+        "type": "function",
+        "z": "b5f36a39.605608",
+        "name": "Payload",
+        "func": "msg.headers={\n    deviceKey:\"i0LlBwqrFZFJENEj\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "e1ff647c.017898",
+                "9da7baee.08d538"
+            ]
+        ]
+    },
+    {
+        "id": "bcc4963d.4dcc68",
+        "type": "inject",
+        "z": "b5f36a39.605608",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "x": 153,
+        "y": 198,
+        "wires": [
+            [
+                "25d3472.0aad0b8"
+            ]
+        ]
+    },
+    {
+        "id": "e1ff647c.017898",
+        "type": "http request",
+        "z": "b5f36a39.605608",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DpvS8C3s/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 515,
+        "y": 146,
+        "wires": [
+            [
+                "a6b15e7.4fe20a"
+            ]
+        ]
+    },
+    {
+        "id": "9da7baee.08d538",
+        "type": "http request",
+        "z": "b5f36a39.605608",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DpvS8C3s/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 505,
+        "y": 191,
+        "wires": [
+            [
+                "a6b15e7.4fe20a",
+                "7487972a.8036a8"
+            ]
+        ]
+    },
+    {
+        "id": "7487972a.8036a8",
+        "type": "http response",
+        "z": "b5f36a39.605608",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 723,
+        "y": 136,
+        "wires": []
+    },
+    {
+        "id": "a6b15e7.4fe20a",
+        "type": "debug",
+        "z": "b5f36a39.605608",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 727,
+        "y": 220,
+        "wires": []
+    }
+]
